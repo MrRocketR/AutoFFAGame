@@ -1,0 +1,1 @@
+Game that plays self in FFA game.
