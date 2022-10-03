@@ -21,8 +21,9 @@ public class Player implements Turns, AI, Battle {
         this.race = race;
     }
 
+
     @Override
-    public void makeTurn() {
-        //write
+    public int[][] makeTurn(int[][] world) {
+        return new int[0][];
     }
 }

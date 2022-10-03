@@ -13,12 +13,5 @@ public class InitGame {
     RaceGen raceGen;
     WorldGen worldGen;
 
-    public static void main(String[] args) {
-        RandomRace randomRace = new RandomRace();
-        Race [] races;
-        races = randomRace.create(10);
-        System.out.println(Arrays.asList(races));
 
-
-    }
 }
