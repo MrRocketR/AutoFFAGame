@@ -29,6 +29,10 @@ public class RandomRace implements RaceGen{
             "Imps", "Pirates"
     };
 
+    public RandomRace(Map<Integer, Race> racesMaps) {
+        this.racesMaps = racesMaps;
+    }
+
 
     @Override
     public Race[] create(int n) {
