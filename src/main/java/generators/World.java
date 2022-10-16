@@ -4,8 +4,8 @@ import model.Race;
 
 import java.util.Random;
 
-public class World implements WorldGen{
-    private int [][] world;
+public class World implements WorldGen {
+    private int[][] world;
 
     @Override
     public void putToMap(Race[] races) {
@@ -14,7 +14,7 @@ public class World implements WorldGen{
             int raw = random.nextInt(world.length);
             int el = random.nextInt(world[raw].length);
             world[1][2] = races[i].getId();
-            if(world[raw][el] == 0) {
+            if (world[raw][el] == 0) {
                 world[raw][el] = races[i].getId();
             }
         }

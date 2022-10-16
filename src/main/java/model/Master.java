@@ -1,20 +1,17 @@
 package model;
 
-import report.Report;
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Master implements Runnable {
     private static Map<Integer, Player> playerMap;
     private static List<Integer> plLocker;
-    private static List<Integer> TempLocker;
+    private static List<Integer> tempLocker;
 
     public Master(Map<Integer, Player> players, List<Integer> locker) {
         playerMap = players;
         plLocker = locker;
-        TempLocker = locker;
+        tempLocker = locker;
     }
 
     public static Player getPlayer(int id) {
@@ -28,14 +25,14 @@ public class Master implements Runnable {
     public synchronized static List<Integer> getList() {
         return plLocker;
     }
-    private synchronized static Map <Integer, Player> getMap (){
+    private synchronized static Map<Integer, Player> getMap() {
         return playerMap;
     }
 
     public void startNewTurn() {
-        if(plLocker.isEmpty()) {
+        if (plLocker.isEmpty()) {
             try {
-                plLocker = TempLocker;
+                plLocker = tempLocker;
                 wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();

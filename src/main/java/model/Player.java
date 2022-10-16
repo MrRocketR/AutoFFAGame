@@ -19,7 +19,7 @@ public class Player implements Turns, AI, Battle, Runnable {
 
     @Override
     public void run() {
-        while(population > 0) {
+        while (population > 0) {
             play();
         }
         System.out.println(this.getRace() + " is destroyed!");

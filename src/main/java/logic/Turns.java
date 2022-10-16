@@ -1,5 +1,5 @@
 package logic;
 
 public interface Turns {
-    int [][] makeTurn(int [][] world);
+    int[][] makeTurn(int[][] world);
 }
