@@ -3,6 +3,9 @@ package model;
 import java.util.List;
 import java.util.Map;
 
+
+
+
 public class Master implements Runnable {
     private static Map<Integer, Player> playerMap;
     private static List<Integer> plLocker;

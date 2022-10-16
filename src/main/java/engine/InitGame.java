@@ -13,5 +13,9 @@ public class InitGame {
     RaceGen raceGen;
     WorldGen worldGen;
 
+    /*
+
+
+     */
 
 }
