@@ -6,12 +6,12 @@ import java.util.Map;
 
 
 
-public class Master implements Runnable {
+public class RandomMaster implements Runnable {
     private static Map<Integer, PlayerLogic> playerMap;
     private static List<Integer> plLocker;
     private static List<Integer> tempLocker;
 
-    public Master(Map<Integer, PlayerLogic> players, List<Integer> locker) {
+    public RandomMaster(Map<Integer, PlayerLogic> players, List<Integer> locker) {
         playerMap = players;
         plLocker = locker;
         tempLocker = locker;
@@ -48,7 +48,7 @@ public class Master implements Runnable {
 
     @Override
     public void run() {
-        while (!Master.getMap().isEmpty()) {
+        while (!RandomMaster.getMap().isEmpty()) {
             startNewTurn();
         }
         System.out.println("Games is over!");

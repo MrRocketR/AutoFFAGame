@@ -19,18 +19,18 @@ public class PlayerLogic implements Turns, AI, Battle, Runnable {
             play();
         }
         System.out.println(this.getRace() + " is destroyed!");
-        Master.deletePlayer(id);
+        RandomMaster.deletePlayer(id);
     }
 
     public synchronized void play() {
         int[][] result = worldGen.getWorld();
-        while (Master.getList().contains(this.getId())) {
+        while (RandomMaster.getList().contains(this.getId())) {
             try {
                 if (turns != 0) {
                     result = makeTurn(result);
                     turns--;
                 } else {
-                    Master.getList().remove(id);
+                    RandomMaster.getList().remove(id);
                 }
                 wait();
             } catch (InterruptedException e) {
@@ -60,8 +60,8 @@ public class PlayerLogic implements Turns, AI, Battle, Runnable {
 
     @Override
     public void fight(int player1, int player2) {
-        PlayerLogic pl1 = Master.getPlayer(player1);
-        PlayerLogic pl2 = Master.getPlayer(player2);
+        PlayerLogic pl1 = RandomMaster.getPlayer(player1);
+        PlayerLogic pl2 = RandomMaster.getPlayer(player2);
         System.out.println(pl1.getRace().getName() + " is fighting with"
                 + pl2.getRace().getName());
         boolean result = pl1.getRace().getPower() > pl2.getRace().getPower();

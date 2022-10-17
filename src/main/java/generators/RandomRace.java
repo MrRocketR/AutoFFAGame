@@ -9,7 +9,6 @@ import java.util.Random;
 
 public class RandomRace implements RaceGen {
     final Random random = new Random();
-    private Map<Integer, Race> racesMaps = new HashMap<>();
 
     final String[] first = new String[] {
         "Angry", "Dark", "Fire", "Kingdom of", "Empire of",
@@ -30,9 +29,7 @@ public class RandomRace implements RaceGen {
             "Imps", "Pirates"
     };
 
-    public RandomRace(Map<Integer, Race> racesMaps) {
-        this.racesMaps = racesMaps;
-    }
+
     private  Race[] races;
 
 
@@ -47,13 +44,8 @@ public class RandomRace implements RaceGen {
             int power = random.nextInt(3);
             Race temp = new Race(i + 1, name, turns, power);
             races[i] = temp;
-            racesMaps.put(temp.getRace_id(), temp);
         }
         return races;
-    }
-
-    public Map<Integer, Race> getRacesMaps() {
-        return racesMaps;
     }
 
     public Race[] getRaces() {
