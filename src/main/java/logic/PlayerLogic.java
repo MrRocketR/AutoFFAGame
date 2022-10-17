@@ -7,40 +7,42 @@ import model.Race;
 
 import java.util.Random;
 
-public class PlayerLogic implements Turns, AI, Battle, Runnable {
+public class PlayerLogic extends  Thread implements Turns, AI, Battle {
 
-    Player player;
+    private Player player;
+    private volatile RandomMaster master;
     private Race race;
-    private int id;
-    private int turns;
+    private int id = 1;
+    private int turns = 0;
     private int population = 1;
     private WorldGen worldGen;
+
+    public PlayerLogic(Player player, RandomMaster master) {
+        this.player = player;
+        this.turns = player.getRace().getTurns();
+        this.id++;
+        this.master = master;
+    }
 
     @Override
     public void run() {
         while (population > 0) {
-            play();
-        }
-        System.out.println(this.getRace() + " is destroyed!");
-        RandomMaster.deletePlayer(id);
-    }
-
-    public synchronized void play() {
-        int[][] result = worldGen.getWorld();
-        while (RandomMaster.getList().contains(this.getId())) {
             try {
-                if (turns != 0) {
-                    result = makeTurn(result);
-                    turns--;
-                } else {
-                    RandomMaster.getList().remove(id);
-                }
-                wait();
+                play();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
-        notify();
+        master.deletePlayer(id);
+    }
+
+    public synchronized void play() throws InterruptedException {
+        int[][] result = master.getWorld();
+        while (turns != 0) {
+            result = makeTurn(result);
+        }
+        wait();
+
     }
 
 
@@ -63,22 +65,8 @@ public class PlayerLogic implements Turns, AI, Battle, Runnable {
 
     @Override
     public void fight(int player1, int player2) {
-        PlayerLogic pl1 = RandomMaster.getPlayer(player1);
-        PlayerLogic pl2 = RandomMaster.getPlayer(player2);
-        System.out.println(pl1.getRace().getName() + " is fighting with"
-                + pl2.getRace().getName());
-        boolean result = pl1.getRace().getPower() > pl2.getRace().getPower();
-        if (result) {
-            System.out.println(pl1.getRace().getName() + "wins!");
-            pl2.lose();
-        }
+
     }
-
-
-    public int getId() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
