@@ -2,11 +2,14 @@ package logic;
 
 import engine.AI;
 import generators.WorldGen;
+import model.Player;
 import model.Race;
 
 import java.util.Random;
 
 public class PlayerLogic implements Turns, AI, Battle, Runnable {
+
+    Player player;
     private Race race;
     private int id;
     private int turns;

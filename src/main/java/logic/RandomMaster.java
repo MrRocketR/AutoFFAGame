@@ -1,12 +1,22 @@
 package logic;
 
+import engine.RandomLobby;
+import model.Player;
+
 import java.util.List;
 import java.util.Map;
-
-
-
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class RandomMaster implements Runnable {
+
+    private RandomLobby lobby;
+    private Map<Integer, Player> playersMap;
+    private ConcurrentLinkedQueue playersQueue;
+    private int[][] world;
+
+
+
+
     private static Map<Integer, PlayerLogic> playerMap;
     private static List<Integer> plLocker;
     private static List<Integer> tempLocker;
@@ -16,6 +26,14 @@ public class RandomMaster implements Runnable {
         plLocker = locker;
         tempLocker = locker;
     }
+
+    public RandomMaster(RandomLobby lobby) {
+        this.lobby = lobby;
+        this.playersMap = lobby.getPlayersMap();
+        this.playersQueue = lobby.getPlayersQueue();
+        this.world = lobby.getWorld();
+    }
+
 
     public static PlayerLogic getPlayer(int id) {
         return playerMap.get(id);

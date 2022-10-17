@@ -1,7 +1,9 @@
 package generators;
 
 import model.Player;
+import model.Race;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -22,8 +24,8 @@ public class RandomGame {
         genWorld.generate(worldSize);
         world = genWorld.getWorld();
         System.out.println("Creating races count = " + players);
-        genRace.create(players);
-        randomPlayers.create(genRace.getRaces());
+        Race[] races = genRace.generate(players);
+        randomPlayers.create(races);
         System.out.println("Generating players = " + players);
         playersMap = randomPlayers.getPlayerMap();
         playersQueue = randomPlayers.getPlayers();

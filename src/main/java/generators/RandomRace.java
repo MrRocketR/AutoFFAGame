@@ -2,10 +2,7 @@ package generators;
 
 import model.Race;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class RandomRace implements RaceGen {
     final Random random = new Random();
@@ -34,7 +31,7 @@ public class RandomRace implements RaceGen {
 
 
     @Override
-    public Race[] create(int n) {
+    public Race[] generate(int n) {
         Race[] races = new Race[n];
         for (int i = 0; i < races.length; i++) {
             int firstWord =  random.nextInt(first.length);

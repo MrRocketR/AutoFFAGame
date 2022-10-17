@@ -6,6 +6,8 @@ public class Race {
     private String name;
     private int power;
 
+
+
     public Race(int id, String name, int turns, int power) {
         this.race_id = id;
         this.name = name;

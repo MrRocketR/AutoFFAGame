@@ -30,9 +30,9 @@ public class RandomLobby implements Lobby {
     }
 
     public void setParamsForGame() {
-        playersMap = game.getPlayersMap();
-        playersQueue = game.getPlayersQueue();
-        world = game.getWorld();
+        this.playersMap = game.getPlayersMap();
+        this.playersQueue = game.getPlayersQueue();
+        this.world = game.getWorld();
     }
 
 
