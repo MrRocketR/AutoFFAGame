@@ -1,4 +1,4 @@
-package model;
+package logic;
 
 import java.util.List;
 import java.util.Map;
@@ -7,17 +7,17 @@ import java.util.Map;
 
 
 public class Master implements Runnable {
-    private static Map<Integer, Player> playerMap;
+    private static Map<Integer, PlayerLogic> playerMap;
     private static List<Integer> plLocker;
     private static List<Integer> tempLocker;
 
-    public Master(Map<Integer, Player> players, List<Integer> locker) {
+    public Master(Map<Integer, PlayerLogic> players, List<Integer> locker) {
         playerMap = players;
         plLocker = locker;
         tempLocker = locker;
     }
 
-    public static Player getPlayer(int id) {
+    public static PlayerLogic getPlayer(int id) {
         return playerMap.get(id);
     }
 
@@ -28,7 +28,7 @@ public class Master implements Runnable {
     public synchronized static List<Integer> getList() {
         return plLocker;
     }
-    private synchronized static Map<Integer, Player> getMap() {
+    private synchronized static Map<Integer, PlayerLogic> getMap() {
         return playerMap;
     }
 

@@ -1,13 +1,13 @@
 package model;
 
 public class Race {
-    private int id;
+    private int race_id;
     private int turns;
     private String name;
     private int power;
 
     public Race(int id, String name, int turns, int power) {
-        this.id = id;
+        this.race_id = id;
         this.name = name;
         this.turns = turns;
         this.power = power;
@@ -17,12 +17,12 @@ public class Race {
         return name;
     }
 
-    public int getId() {
-        return id;
+    public int getRace_id() {
+        return race_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setRace_id(int race_id) {
+        this.race_id = race_id;
     }
 
     public int getTurns() {

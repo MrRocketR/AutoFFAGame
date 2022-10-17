@@ -45,7 +45,7 @@ public class RandomRace implements RaceGen {
             int power = random.nextInt(3);
             Race temp = new Race(i + 1, name, turns, power);
             races[i] = temp;
-            racesMaps.put(temp.getId(), temp);
+            racesMaps.put(temp.getRace_id(), temp);
         }
         return races;
     }

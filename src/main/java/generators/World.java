@@ -13,9 +13,9 @@ public class World implements WorldGen {
         for (int i = 0; i < races.length; i++) {
             int raw = random.nextInt(world.length);
             int el = random.nextInt(world[raw].length);
-            world[1][2] = races[i].getId();
+            world[1][2] = races[i].getRace_id();
             if (world[raw][el] == 0) {
-                world[raw][el] = races[i].getId();
+                world[raw][el] = races[i].getRace_id();
             }
         }
     }
