@@ -3,6 +3,7 @@ package generators;
 import model.Race;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -32,6 +33,7 @@ public class RandomRace implements RaceGen {
     public RandomRace(Map<Integer, Race> racesMaps) {
         this.racesMaps = racesMaps;
     }
+    private  Race[] races;
 
 
     @Override
@@ -54,4 +56,7 @@ public class RandomRace implements RaceGen {
         return racesMaps;
     }
 
+    public Race[] getRaces() {
+        return races;
+    }
 }
