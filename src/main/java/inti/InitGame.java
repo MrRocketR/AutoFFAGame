@@ -16,6 +16,7 @@ public class InitGame {
         RandomLobby lobby = new RandomLobby();
         lobby.setParamsForLobby(4, 10);
         RandomMaster master = new RandomMaster(lobby);
+        master.startTheGame();
 
     }
 
